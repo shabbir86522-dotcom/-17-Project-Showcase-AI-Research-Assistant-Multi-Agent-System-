@@ -1,0 +1,55 @@
+class ResearchAgent:
+    def research(self, topic):
+        return f"Research completed on: {topic}"
+
+class SummaryAgent:
+    def summarize(self, research):
+        return f"Summary: {research}"
+
+class ReportAgent:
+    def generate_report(self, summary):
+        return f"\nAI Research Report\n{'='*30}\n{summary}"
+
+topic = input("Enter Research Topic: ")
+
+research_agent = ResearchAgent()
+summary_agent = SummaryAgent()
+report_agent = ReportAgent()
+
+research = research_agent.research(topic)
+summary = summary_agent.summarize(research)
+report = report_agent.generate_report(summary)
+
+print(report)
+
+
+
+Better Multi-Agent Version
+class ResearchAgent:
+    def collect(self, topic):
+        return f"Collected information about {topic}"
+
+class AnalysisAgent:
+    def analyze(self, data):
+        return f"Analysis completed: {data}"
+
+class SummaryAgent:
+    def summarize(self, analysis):
+        return f"Summary created from {analysis}"
+
+class ReportAgent:
+    def report(self, summary):
+        return f"\n===== AI Research Report =====\n{summary}"
+
+topic = input("Enter Research Topic: ")
+
+research = ResearchAgent()
+analysis = AnalysisAgent()
+summary = SummaryAgent()
+report = ReportAgent()
+
+data = research.collect(topic)
+analysis_result = analysis.analyze(data)
+summary_result = summary.summarize(analysis_result)
+
+print(report.report(summary_result))
